@@ -4,6 +4,7 @@ Before running the script, set RCLONE_S3_ACCESS_KEY_ID and RCLONE_S3_SECRET_ACCE
 Then run the script to get a list of mission-plot pairs based on spatial overlap and closest survey/mission dates.
 Missions are classified as high-nadir/low-oblique, and plots are only paired with
 high-nadir missions. Plots with no overlapping high-nadir mission are dropped and reported.
+Finally, filter mission-plot pairs based on manual quality assessments of the drone-to-field registration shift.
 The output is saved to a CSV file that can be used by ofo-argo/argo-workflows/tree-detection-and-eval.yaml as an input file.
 """
 
@@ -16,8 +17,7 @@ import geopandas as gpd
 from pathlib import Path
 
 def classify_mission(row):
-    """Classify a mission as high-nadir, low-oblique, or other, mirroring
-    tree-species-prediction/1_data_prep/04_pair_drone_with_ground.py::classify_mission."""
+    """Classify a mission as high-nadir, low-oblique, or other"""
     altitude = row["mean_altitude"]
     pitch = row["camera_pitch_derived"]
     terrain_corr = row["flight_terrain_correlation_photogrammetry"]
