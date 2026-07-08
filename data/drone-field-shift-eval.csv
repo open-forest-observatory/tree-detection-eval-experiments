@@ -1,0 +1,487 @@
+drone_mission,plot_id,quality_of_predicted_registration,confidence_in_assessment,quality_of_field_trees,notes
+1,52,3,1,1,Lots of per-tree noise and the canopy does not have many features
+2,52,3,1,1,Lots of per-tree noise and the canopy does not have many features
+7,84,2,3,2,"There's a several meter shift that aligned clusters of small trees, but the large trees did not seem to align well"
+8,84,2,3,2,"There's a several meter shift that aligned clusters of small trees, but the large trees did not seem to align well"
+13,131,1,4,3,Shifted by hand and found the correct one. Some shrubs were not visible in the CHM.
+15,131,1,4,3,Shifted by hand and found the correct one. Some shrubs were not visible in the CHM.
+16,128,1,4,3,Shifted by hand and found the correct one.
+18,128,3,4,3,
+19,81,3,3,3,"Big trees look aligned, it's hard to tell with the small ones. "
+28,112,3,4,4,A slight shift left could have improved the quality
+29,112,3,4,4,A slight shift left could have improved the quality
+47,113,1,4,3,Shifted by hand a large distance
+47,114,1,4,3,Shifted by hand
+48,113,1,4,3,Shifted by hand two rows above
+48,114,3,4,3,
+78,248,2,1,2,"All the trees are small, it's really hard to tell"
+78,250,1,1,1,All trees are short
+78,251,1,1,1,"Did not show up, despite having a height column"
+78,253,2,1,1,All trees are short
+78,254,3,1,2,All trees are short
+78,257,1,2,2,Found some possible alterantive shifts
+78,258,1,1,,
+78,259,1,4,,Tried multiple shifts and nothing was great. In the middle of flat ground.
+78,260,2,2,2,Lots of trees seem to be missing
+78,261,3,3,2,Some trees seem like they might be missing
+78,262,1,2,2,Hard to figure out a better shift
+78,263,1,3,2,Found a shift that seemed better but not perfect
+78,264,1,2,1,
+78,265,2,3,2,Tried a bunch of shifts and nothing looked good
+78,266,3,2,2,One other plausible shift
+78,267,3,2,2,
+78,268,3,2,2,Many medium trees seem to be missing
+78,269,1,1,1,In the middle of nothing
+89,81,3,3,3,"Some per tree noise. Big ones look ok, hard to tell with small ones."
+90,81,3,3,3,"Some per tree noise. Big ones look ok, hard to tell with small ones."
+91,40,4,4,4,Looks good!
+91,107,4,4,3,Some per tree noise
+92,107,4,4,3,Some per tree noise
+93,107,4,4,3,Some per tree noise
+96,40,4,4,4,Looks good! Tiny amount of per-tree shift
+96,107,4,4,3,Some per tree noise
+97,46,3,3,3,"Seems plausible, with some noise and lots of small trees"
+98,46,2,4,3,A couple meter shift made it a lot better
+100,108,4,4,4,
+101,108,4,4,4,
+103,94,4,4,4,
+104,94,4,4,4,
+106,102,4,4,4,
+107,102,1,4,4,Missed the shift from above
+109,27,4,4,4,
+110,27,4,4,4,Slight tree level shifts
+112,208,2,2,1,Unclear
+112,210,1,2,1,Unclear
+112,211,2,2,1,Unclear
+113,28,4,4,4,
+114,28,4,4,4,
+116,35,4,4,4,A slight shift rightward could have helped
+118,35,4,4,4,
+119,32,,1,,Photogrammetry is degraded in this region
+119,104,4,4,4,
+121,32,4,4,4,
+123,32,1,4,4,The field trees don't fully overlap with the drone. Validated from the next pairing.
+124,32,4,4,4,
+124,104,4,4,4,
+126,104,4,4,4,
+127,105,4,4,3,Some smaller trees look noisy or missing
+128,105,4,4,3,Some smaller trees look noisy or missing
+129,105,4,4,3,Some smaller trees look noisy or missing
+131,105,4,4,3,Some smaller trees look noisy or missing
+133,49,4,4,4,
+133,110,3,3,3,"There's a fair bit of noise in the trees, with a handful of overlapping trees"
+136,49,4,4,4,
+136,110,4,3,3,
+137,25,4,4,4,
+139,25,3,2,2,Degraded photogrammetry so it's hard to tell
+141,6,4,4,3,Some per-tree noise
+141,7,4,4,4,A little bit of noise in the lower right
+142,6,4,4,4,
+142,7,1,3,2,"Half off the CHM, hard to tell if there was a better shift"
+143,7,4,4,4,
+144,6,1,3,1,"Half off the CHM, hard to tell"
+144,7,4,4,4,
+145,5,4,4,3,A little bit of per tree noise
+147,5,4,4,4,Even small trees are accurate
+148,26,3,4,3,Some clumps are shifted
+149,26,3,4,3,Some clumps are shifted
+151,44,3,3,3,The CHM was pretty blurred 
+152,44,3,3,3,
+153,100,4,4,3,Mid sized trees look a little off
+155,100,4,4,3,Mid sized trees look a little off
+157,98,4,4,4,
+158,98,4,4,4,
+160,96,3,3,3,Small trees look a little shifted
+161,96,4,4,3,
+162,95,4,4,4,
+164,95,4,4,4,
+165,97,3,4,4,Should have been shifted a meter or two
+167,101,4,4,4,
+168,97,3,4,4,Should have been shifted a meter or two west
+169,101,4,4,4,
+171,47,4,3,3,Hard to tell since the CHM is fairly blurry
+171,48,4,3,3,Seems like there may be some noise in the trees and the CHM is blurry
+171,51,4,3,3,Some shifts and potential missing trees
+173,47,4,4,3,Might be some noise in the field trees
+173,48,3,3,3,Looks like a couple meters to the east would have improved it
+174,47,4,4,3,Some noise or seemingly missing trees
+174,48,4,4,3,
+174,51,4,3,3,It seems like there may be gaps in the field trees
+175,47,4,4,3,
+175,48,4,4,3,
+177,92,1,4,3,Found the shift using the other mission below
+180,92,4,4,3,
+184,88,4,4,4,
+187,29,4,4,4,
+188,103,4,4,4,
+189,29,4,4,3,Some noise in clusters of trees
+190,90,4,4,3,Some field tree shifts
+191,103,4,4,4,
+192,89,4,2,1,It looks like most of the large trees were not surveyed on the right side of the plot
+193,89,4,2,1,It looks like most of the large trees were not surveyed on the right side of the plot
+193,90,3,4,4,A slight shift left probably would have been good
+194,91,4,4,4,Some trees have a bit of noise
+195,89,4,2,1,It looks like most of the large trees were not surveyed on the right side of the plot
+197,91,4,4,3,
+199,106,4,4,3,Some blockwise shifts
+203,99,3,4,3,I think a small shift would have made it better
+204,157,1,4,4,I found a different shift that was good
+204,165,3,4,4,A 1-2m shift could have made it better
+204,166,3,2,3,Looks plausible with a small shift
+205,157,3,2,3,"Very short trees, looks plausible "
+205,165,1,4,4,"Found a different shift, maybe 10m different"
+205,166,1,2,3,I found what I think was a better registration
+207,99,3,4,3,
+208,137,4,3,3,
+208,140,2,2,,I might have found a better shift
+208,142,1,3,,Nothing visible in the CHM or the ortho
+208,144,2,1,2,Seems plausible but hard to tell
+208,148,1,1,2,Looks like the area might have burned
+208,149,2,1,1,Looks like the area might have burned
+208,151,1,1,1,Looks like the area might have burned
+210,137,3,2,3,
+210,140,1,3,3,I found a large shift that was better
+210,142,1,2,,Looks like the area burned
+210,144,2,1,1,Some of the largest trees are missing
+210,148,1,1,,
+210,149,1,1,1,
+210,151,1,2,1,Seems burned
+211,158,3,3,3,
+211,159,3,4,3,The trees should have been shifted left a few meters
+211,160,3,4,3,
+211,161,3,2,2,The trees are sparse so it's hard to understand whats going on
+211,162,2,2,2,
+211,163,1,4,3,There's a shift upward of about 10m that looks better
+211,164,3,3,3,Per tree noise
+220,158,3,3,3,There's a shift leftward that looks better
+220,159,4,4,4,
+220,160,3,4,3,
+220,161,2,2,2,Many trees seem to be missing
+220,162,3,2,2,Hard to understand what's going on
+220,163,4,3,3,Lots of per tree noise
+220,164,4,3,3,Lots of per tree noise
+221,138,1,2,,Hard to tell what's going on
+221,139,1,2,,
+221,141,1,2,,
+221,143,1,2,,I think I found a better shift
+221,145,2,1,,It looks like there may have been missing trees or it was very shifted
+221,147,3,2,3,"Looks good, but some trees are dead"
+221,150,1,3,3,I think I found a better shift
+221,152,1,2,,
+221,153,1,3,,Burned?
+221,154,1,3,,Burned?
+221,156,1,3,,Burned?
+223,70,1,4,,This plot is half off the drone mission
+223,73,4,4,4,A few trees are shifted or missing
+223,74,4,4,4,
+223,75,4,4,4,
+223,76,4,4,4,One missing large tree
+225,77,3,4,4,Should be shifted slightly upward
+225,78,3,4,4,Should be shifted slightly right
+225,79,4,4,4,
+225,80,4,4,4,
+227,69,4,4,4,
+229,138,1,3,,Seems like a bad plot
+229,139,1,3,,
+229,141,1,3,,
+229,143,4,3,3,
+229,145,3,2,3,Very short and featureless
+229,147,4,3,3,Lots of trees are dead but marked as live
+229,150,1,3,,Way off
+229,152,1,3,,
+229,153,1,3,,Fire killed?
+229,154,1,4,,Fire killed?
+229,156,1,4,,Fire killed?
+230,70,1,4,,The plot was off the mission
+230,73,3,4,4,Should have been shifted slightly upward
+230,74,4,4,4,
+230,75,4,4,4,
+230,76,4,4,4,One large missing tree
+231,71,3,4,3,"It ssems like a downward, rightward shift would improve this. But there's also per-tree error."
+231,72,4,4,4,
+232,77,3,4,4,Slight upward shift would improve it
+232,78,4,4,4,
+232,79,4,4,4,
+232,80,4,4,4,
+233,69,4,4,4,
+234,71,1,2,,Partially non-overlapping. Potential noise in the field trees.
+234,72,4,4,4,
+236,86,3,2,3,"The canopy is ""blurry"" and there may be noise in the field trees"
+237,86,3,2,3,"The canopy is ""blurry"" and there may be noise in the field trees"
+239,86,3,2,3,"The canopy is ""blurry"" and there may be noise in the field trees"
+242,85,4,4,3,Some noise?
+244,18,3,4,4,Slight downward shift would have improved it
+245,85,4,4,3,
+246,18,3,4,4,Slight downward shift would have improved the quality
+248,14,4,4,3,Per tree noise
+251,14,4,4,3,Per tree noise
+254,8,4,4,4,
+256,8,4,4,4,
+271,10,4,4,4,
+273,10,4,4,4,
+278,20,4,4,4,
+279,20,4,4,4,
+280,16,4,4,4,One missing tree
+281,15,3,3,3,Per-tree noise?
+282,13,4,4,4,
+283,19,3,4,3,"Some per-tree noise, especially with small trees"
+284,16,4,4,4,
+285,4,4,4,4,
+286,13,4,4,4,
+288,19,3,3,3,
+289,9,3,4,4,Slight downward shift would improve it
+291,15,4,3,3,Per tree noise
+293,4,4,4,4,
+295,11,4,4,4,
+296,9,3,4,4,"Slight down, left shift would improve"
+301,11,4,4,4,
+306,38,3,4,4,Leftward shift
+307,38,3,4,4,Leftward shift
+310,208,1,2,,
+310,210,1,3,,
+310,211,3,4,3,A leftward shift would have helped
+311,221,3,2,3,
+312,206,1,2,,
+313,206,1,2,,
+318,167,1,4,4,There's better shift down and to the right
+319,167,1,4,4,There's better shift down and to the right
+320,213,2,1,,
+320,214,1,1,,
+320,216,2,1,,
+320,218,2,1,,
+321,213,2,1,,
+321,214,1,1,,It seems like many trees are missing
+321,216,1,1,,
+321,218,1,1,,
+322,221,2,1,,
+323,81,4,4,4,
+324,81,4,4,4,
+333,61,4,4,4,There's a number of dead trees that were not reconstructed
+333,63,4,4,4,
+333,65,4,4,4,There's a number of dead trees that were not reconstructed
+334,61,4,4,4,There's a number of dead trees that were not reconstructed
+334,63,4,4,4,There's a number of dead trees that were not reconstructed
+334,65,4,4,4,There's a number of dead trees that were not reconstructed
+335,61,4,4,4,There's a number of dead trees that were not reconstructed
+335,63,4,4,4,There's a number of dead trees that were not reconstructed
+335,65,4,4,4,There's a number of dead trees that were not reconstructed
+337,59,4,4,4,There's a number of dead trees that were not reconstructed
+338,59,4,4,4,There's a number of dead trees that were not reconstructed
+339,58,4,4,4,
+339,64,4,4,4,
+340,58,4,4,4,
+340,64,4,4,4,One tree was unshifted
+342,58,4,4,4,
+342,64,3,4,4,Should have been shifted up and left
+348,60,4,4,4,
+348,62,4,4,4,
+349,60,3,4,4,A slight upward shift would have improved it
+349,62,4,4,4,
+404,66,4,4,4,
+405,66,4,4,4,
+406,67,4,4,3,It seems like some trees are missing
+407,67,4,4,3,It seems like some trees are missing
+430,59,4,4,4,Some dead trees are not reconstructed
+431,59,4,4,4,Some dead trees are not reconstructed
+434,68,4,4,4,
+435,68,4,4,4,
+436,68,4,4,4,
+438,68,4,4,4,
+439,68,4,4,4,
+440,68,4,4,4,
+442,68,4,4,4,
+443,68,4,4,4,
+444,168,3,4,3,An upward leftward shift would have improved it
+444,169,1,4,,The photogrammetry is degraded
+446,2,2,3,3,"A down, right shift would have improved it"
+446,21,3,3,3,Some trees seem shifted or missing
+448,22,3,3,4,Shift up to the left would have improved it
+448,30,4,4,3,Some per tree noise
+448,170,1,4,,Degraded photogrammetry
+448,171,4,4,4,
+450,168,4,4,3,It seems like there may have been a stretch in the field trees
+450,169,4,3,3,Per tree noise
+451,2,2,3,3,"A down, right shift would have improved it"
+451,21,4,4,3,Per tree noise
+452,22,3,4,4,Upward left shift would have improved it
+452,30,4,4,4,Slight per-tree noise
+452,170,2,4,4,Upward left shift larger than one tree would have improved it
+452,171,3,4,4,Slight upward shift would improve it
+643,115,4,4,4,
+644,115,4,4,4,
+645,115,4,4,4,
+646,116,4,4,4,
+647,116,4,4,4,
+648,116,4,4,4,
+649,117,4,4,3,Slight distortion
+649,118,4,4,4,
+650,117,4,4,3,Slight distortion
+650,118,4,4,4,
+676,115,4,4,4,
+709,115,1,4,4,More than half off
+743,115,4,4,4,
+744,105,3,2,2,It looks like some of the area was logged based on stumps and a pile
+745,105,3,2,2,It looks like some of the area was logged based on stumps and a pile
+746,36,3,2,3,Lots of per-tree noise
+747,36,3,2,3,Lots of per-tree noise
+748,37,4,4,4,
+749,37,4,4,4,
+750,35,4,4,4,
+751,35,4,4,4,
+775,45,4,4,4,
+776,45,4,4,4,
+777,45,4,4,4,
+778,100,4,4,3,Small trees look noisy
+779,100,4,4,3,Small trees look noisy
+780,69,4,4,4,
+781,69,4,4,4,
+782,69,4,4,4,
+808,77,4,4,4,
+808,78,4,4,4,
+808,79,4,4,4,There may be a slight distortion
+808,80,4,4,4,
+874,70,1,4,,Field plot barely overlaps
+874,73,4,4,4,
+874,74,4,4,4,
+874,75,4,4,4,
+874,76,3,4,4,Slight downward shift would improve it
+932,70,1,4,,Plot has partial overlap
+932,73,4,4,4,
+932,74,4,4,4,
+932,75,4,4,4,
+932,76,3,4,4,A slight downward shift would have improved it
+934,70,4,4,3,Some per tree noise
+934,71,4,4,3,Some per tree noise
+934,72,4,4,4,Small amount of per-tree noise
+934,75,1,4,,Plot has minimal overlap
+934,76,1,4,,Plot has partial overlap
+935,70,4,4,3,Slight per tree noise or distortion
+935,71,4,4,4,
+935,72,4,4,4,
+935,76,1,4,,Plot has minimal overlap
+938,197,4,4,4,One tree is way off to the side
+938,198,4,4,4,
+938,199,4,4,4,
+939,197,3,4,4,Slight leftward shift would improve it
+939,198,4,4,4,
+939,199,4,4,4,One large tree seems to have fallen or been cut
+1011,200,1,4,4,A left shift would have aligned it well
+1011,201,3,4,4,Slight downward shift would have improved it
+1011,202,4,4,4,
+1012,200,1,4,4,A left shift would have aligned it
+1012,201,4,4,4,
+1012,202,4,4,4,
+1013,276,3,1,3,Lots of per-tree noise. This may or may not be better than the one below.
+1014,276,3,1,3,Lots of per-tree noise
+1015,273,4,4,4,
+1016,273,4,4,4,
+1017,275,4,4,3,Lots of per tree noise
+1019,275,4,4,3,Lots of per tree noise
+1039,274,1,3,3,I think I found a better shift to the left
+1040,274,1,3,3,I think I found a better shift to the left
+1042,272,1,1,,The canopy was dense and I could not figure out a better shift. It looks like there is likely a lot of per tree noise.
+1043,272,1,1,,The canopy was dense and I could not figure out a better shift. It looks like there is likely a lot of per tree noise.
+1044,271,4,4,4,Large canopy gaps helped make it clear where the best shift was
+1045,271,4,4,4,Large canopy gaps helped make it clear where the best shift was
+1046,270,1,4,4,There was a large down and right shift that made it better 
+1047,270,1,4,4,There was a large down and right shift that made it better 
+1048,289,4,4,4,Dense canopy but there was enough variation and peaks it that helped
+1049,289,4,4,4,Dense canopy but there was enough variation and peaks it that helped
+1053,278,4,4,4,The trees are planted on a grid. But it seems like this shift if correct due to gaps matching up.
+1055,278,4,4,4,The trees are planted on a grid. But it seems like this shift if correct due to gaps matching up.
+1056,288,1,4,4,Good shift to the left and up
+1057,288,1,4,4,Good shift to the left and up. The plot only partially overlaps.
+1065,277,4,4,3,"Trees are planted on a grid and there are multiple plots. It seems like the points may be on a perfectly rectangular grid, so there is some distortion in one plot."
+1067,281,1,4,1,Trees are planted on a grid. The grid lines appear rotated from reality. 
+1139,58,4,1,4,"Post fire. All trees are killed. However, the shift looks correct based on the stems."
+1139,64,4,1,4,"Post fire. All trees are killed. However, the shift looks correct based on the stems."
+1140,58,3,1,4,"Post fire. All trees are killed. However, slight rightward shift would have improved it based on stems."
+1140,64,4,1,4,"Post fire. All trees are killed. However, the shift looks correct based on the stems."
+1204,195,4,4,4,
+1204,196,4,4,4,
+1205,195,4,4,4,
+1205,196,4,4,4,
+1206,188,4,4,3,Some per tree noise
+1207,193,4,4,4,
+1208,188,4,4,3,Some per tree noise
+1209,193,4,4,4,
+1210,191,4,4,4,
+1211,191,4,4,4,
+1212,194,1,4,3,The trees should be shifted up and to the right
+1213,194,1,4,3,The trees should be shifted left and down
+1214,192,4,4,3,Some distoration in the trees
+1215,192,4,4,3,Some distoration in the trees
+1216,186,3,4,3,"Slight shift up would improve it, there may be a distortion as well"
+1217,186,3,4,3,"Slight shift up would improve it, there may be a distortion as well"
+1218,190,3,4,3,Slight right ward shift would improve it. Also some distortion or blockwise issues.
+1219,190,3,4,3,Slight right ward shift would improve it. Also some distortion or blockwise issues.
+1220,187,3,4,3,Slight downward shift would improve it. Slight distortion in the field trees.
+1221,187,3,4,3,Slight upward shift could improve it. Slight distotion in the field trees.
+1237,173,2,4,4,There was a left/up shift that would have fixed it
+1237,176,4,4,2,Some distortion and two large trees appeared missed
+1237,180,3,4,3,Slight down/right shift would improve it. Likely some distortion between the two sides.
+1237,181,1,2,,Unclear
+1237,182,3,3,3,Down and left shift would have improved it
+1237,183,4,3,3,
+1237,185,3,3,3,Slight downward shift might have improved it. Looks like some noise.
+1238,173,3,2,3,Looks plausible but it's hard to tell
+1238,176,4,4,2,Some distortion and two large trees appeared missed
+1238,180,4,3,3,
+1238,181,3,2,3,Looks reasonable but it's hard to tell
+1238,182,1,4,,There was a better shift from the 1237 mission
+1238,183,3,3,3,This looks correct but it's hard to tell
+1238,185,4,4,3,
+1270,172,4,3,3,
+1270,174,3,4,3,"A slight shift up and left would have helped, while some trees had noise"
+1270,175,4,4,3,Some per tree noise
+1270,177,4,4,4,Surprisingly good given the closed canopy
+1270,178,4,2,2,Hard to tell if this is correct
+1270,179,4,3,4,
+1270,184,4,3,3,Some per tree noise
+1271,172,4,3,3,
+1271,174,3,3,4,Shift up and left would improve it
+1271,175,4,3,3,"Some trees might be missing, it's a very narrow strip"
+1271,177,4,4,4,Surprisingly good given the closed canopy
+1271,178,3,2,3,
+1271,179,3,3,3,I think a slight shift to the left/up would have helped
+1271,184,3,3,3,Slight shift up would have improved
+1273,282,4,4,3,Trees are in a grid. The missing trees line up.
+1275,283,4,4,3,Trees are in a grid. The missing trees line up.
+1304,279,4,4,3,The trees are in a grid and there's a fair bit of distortion
+1306,285,3,4,3,A slight shift up would have improved it. Slight rotation or distortion.
+1307,81,4,3,4,It's hard to tell if medium trees are missed.
+1309,81,4,3,4,It's hard to tell if medium trees are missed.
+1406,113,1,4,,
+1406,114,3,4,3,An upward shift would improve this
+1407,113,4,4,3,Lots of per tree noise
+1407,114,3,4,3,Leftward shift would have improved 
+1408,12,4,4,4,
+1409,12,4,4,4,
+1410,15,1,4,3,I found a better shift that was dramatically up and to the left
+1411,15,3,4,3,Some per tree noise
+1412,92,1,3,,Lots of field trees in empty spaces
+1413,92,1,1,,Does not seem correct but it's hard to tell
+1414,91,4,4,4,
+1415,91,4,4,4,
+1416,106,4,4,4,
+1417,106,4,4,4,
+1418,31,4,3,3,Slight per-tree noise
+1418,33,4,4,3,Some distortion
+1418,39,4,4,4,
+1418,42,4,4,3,Some per-tree noise or distortion in the bottom right
+1419,31,4,3,3,Slight per-tree noise
+1419,33,1,4,4,"Partially off the map, there is a better shift from the other mission"
+1419,42,4,4,4,
+1420,31,4,3,3,Slight per-tree noise
+1420,33,1,4,4,"Partially off the map, there is a better shift from the other mission"
+1420,42,4,4,4,
+1421,29,3,4,3,Slight downward shift would improve it
+1422,29,4,4,4,
+1435,1,3,4,3,
+1436,1,4,4,3,
+1437,3,4,4,3,Per tree noise
+1438,3,4,4,3,Per tree noise
+1439,45,4,4,4,
+1440,45,4,4,4,
+1468,66,4,3,3,Some per tree noise and a number of trees that have died
+1469,66,4,3,3,Some per tree noise and a number of trees that have died

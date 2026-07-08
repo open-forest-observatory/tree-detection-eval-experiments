@@ -107,6 +107,14 @@ PLOT_IDS_FILE = "/ofo-share/project-data/species-prediction-project/raw/withheld
 GROUND_REFERENCE_PLOTS_FILE = "/ofo-share/argo-data/argo-input/tree-detection-and-evaluation/ofo_ground-reference_plots.gpkg"
 # File containing all missions metadata (with derived altitude fields) used to classify missions as nadir/oblique
 MISSION_CLASSIFICATION_FILE = "/ofo-share/project-data/species-prediction-project/intermediate/preprocessing/ofo-all-missions-metadata-with-altitude.gpkg"
+# File containing manual quality assessments of the drone-to-field registration shift for each mission-plot pair
+SHIFT_EVAL_FILE = "/ofo-share/repos/amritha/tree-detection-eval-experiments/data/drone-field-shift-eval.csv"
+# Shift eval quality columns
+SHIFT_EVAL_QUALITY_COLS = [
+    "quality_of_predicted_registration",
+    "confidence_in_assessment",
+    "quality_of_field_trees",
+]
 # This is where rclone downloads mission metadata files from s3 for matching with plots. It gets deleted at the end of the script.
 MISSION_METADATA_FOLDERS = "/ofo-share/argo-data/argo-input/tree-detection-and-evaluation/mission-metadata"
 
@@ -205,6 +213,37 @@ if unpaired_plot_ids:
     print(f"{len(unpaired_plot_ids)} plot(s) dropped due to no overlapping high-nadir mission:")
     for plot_id in unpaired_plot_ids:
         print(f"  {plot_id}")
+
+# Load shift eval quality assessments and align ID formats with the pairs (zero-padded strings)
+shift_eval = pd.read_csv(SHIFT_EVAL_FILE, dtype=str)
+shift_eval["mission_id"] = shift_eval["drone_mission"].str.zfill(6)
+shift_eval["plot_id"] = shift_eval["plot_id"].str.zfill(4)
+# Convert the quality columns from str to numbers
+for col in SHIFT_EVAL_QUALITY_COLS:
+    shift_eval[col] = pd.to_numeric(shift_eval[col], errors="coerce")
+
+# Match each mission-plot pair to its shift eval row
+pairs = pairs.merge(
+    shift_eval[["mission_id", "plot_id"] + SHIFT_EVAL_QUALITY_COLS],
+    on=["mission_id", "plot_id"],
+    how="left",
+    indicator=True,
+)
+# Report and drop pairs with no matching shift eval entry
+missing_shift_eval = pairs[pairs["_merge"] == "left_only"]
+if len(missing_shift_eval):
+    print(f"{len(missing_shift_eval)} mission-plot pair(s) not found in shift eval file, dropping:")
+    for _, row in missing_shift_eval.iterrows():
+        print(f"mission_id={row['mission_id']}, plot_id={row['plot_id']}")
+pairs = pairs[pairs["_merge"] == "both"].drop(columns="_merge")
+
+# Report and drop pairs with poor shift quality (any quality column rated 1 or 2)
+poor_shift_quality = pairs[SHIFT_EVAL_QUALITY_COLS].isin([1, 2]).any(axis=1)
+if poor_shift_quality.any():
+    print(f"{poor_shift_quality.sum()} mission-plot pair(s) dropped due to poor shift quality:")
+    for _, row in pairs[poor_shift_quality].iterrows():
+        print(f"mission_id={row['mission_id']}, plot_id={row['plot_id']}")
+pairs = pairs[~poor_shift_quality].drop(columns=SHIFT_EVAL_QUALITY_COLS).reset_index(drop=True)
 
 # Save the pairs to a CSV file
 Path(OUTPUT_FILE).parent.mkdir(parents=True, exist_ok=True)
