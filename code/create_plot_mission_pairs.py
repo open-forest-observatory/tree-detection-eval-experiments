@@ -1,16 +1,73 @@
 """
 This script downloads mission metadata files from S3 using rclone.
 Before running the script, set RCLONE_S3_ACCESS_KEY_ID and RCLONE_S3_SECRET_ACCESS_KEY env variables with appropriate credentials.
-Then run the script to get a list of mission-plot pairs based on spatial overlap and closest survey/mission dates. 
-The output is saved to a CSV file that can be used by ofo-argo/argo-workflows/tree-detection-and-eval.yaml as an input file. 
+Then run the script to get a list of mission-plot pairs based on spatial overlap and closest survey/mission dates.
+Missions are classified as high-nadir/low-oblique, and plots are only paired with
+high-nadir missions. Plots with no overlapping high-nadir mission are dropped and reported.
+The output is saved to a CSV file that can be used by ofo-argo/argo-workflows/tree-detection-and-eval.yaml as an input file.
 """
 
 import shutil
 import subprocess
 import pyproj
+import numpy as np
 import pandas as pd
 import geopandas as gpd
 from pathlib import Path
+
+def classify_mission(row):
+    """Classify a mission as high-nadir, low-oblique, or other, mirroring
+    tree-species-prediction/1_data_prep/04_pair_drone_with_ground.py::classify_mission."""
+    altitude = row["mean_altitude"]
+    pitch = row["camera_pitch_derived"]
+    terrain_corr = row["flight_terrain_correlation_photogrammetry"]
+    sd_photogrammetry_altitude = row["sd_photogrammetry_altitude"]
+    front_overlap = row["overlap_front_nominal"]
+    side_overlap = row["overlap_side_nominal"]
+
+    # Check for NaNs
+    if (
+        pd.isna(altitude)
+        or pd.isna(pitch)
+        or pd.isna(terrain_corr)
+        or pd.isna(front_overlap)
+        or pd.isna(side_overlap)
+    ):
+        return "unknown"
+
+    # Must meet terrain fidelity or SD requirement
+    if not (terrain_corr > 0.75 or sd_photogrammetry_altitude < 12):
+        return "low-terrain-fidelity"
+
+    # High-Nadir requirements
+    if (
+        100 <= altitude <= 160
+        and 0 <= pitch <= 10
+        and (
+            (front_overlap >= 90 and side_overlap >= 80)
+            or (front_overlap >= 85 and side_overlap >= 85)
+        )
+    ):
+        return "high-nadir"
+
+    # Low-Oblique requirements
+    if (
+        60 <= altitude <= 120
+        and 18 <= pitch <= 38
+        and front_overlap >= 70
+        and side_overlap >= 60
+    ):
+        return "low-oblique"
+
+    return "unclassified"
+
+def extract_min_overlap(val):
+    """Helper function to get minimum value from comma-separated overlap values."""
+    if pd.isna(val):
+        return np.nan
+    if isinstance(val, str) and "," in val:
+        return min(float(x.strip()) for x in val.split(","))
+    return float(val)
 
 def ensure_projected_crs(gdf):
     if gdf.crs.is_projected:
@@ -48,6 +105,8 @@ OUTPUT_FILE = "/ofo-share/argo-data/argo-input/tree-detection-and-evaluation/dat
 PLOT_IDS_FILE = "/ofo-share/project-data/species-prediction-project/raw/withheld_ground_plot_ids_v1.csv"
 # File containing ground plot boundaries and survey dates
 GROUND_REFERENCE_PLOTS_FILE = "/ofo-share/argo-data/argo-input/tree-detection-and-evaluation/ofo_ground-reference_plots.gpkg"
+# File containing all missions metadata (with derived altitude fields) used to classify missions as nadir/oblique
+MISSION_CLASSIFICATION_FILE = "/ofo-share/project-data/species-prediction-project/intermediate/preprocessing/ofo-all-missions-metadata-with-altitude.gpkg"
 # This is where rclone downloads mission metadata files from s3 for matching with plots. It gets deleted at the end of the script.
 MISSION_METADATA_FOLDERS = "/ofo-share/argo-data/argo-input/tree-detection-and-evaluation/mission-metadata"
 
@@ -80,6 +139,24 @@ mission_metadata = gpd.GeoDataFrame(
     pd.concat([gpd.read_file(f) for f in mission_files]),
     crs=gpd.read_file(mission_files[0]).crs
 )
+
+# Load mission metadata with derived altitude fields and classify each mission as
+# high-nadir / low-oblique / other, so plots can be paired with nadir missions only
+mission_classification = gpd.read_file(MISSION_CLASSIFICATION_FILE)
+mission_classification["mission_id"] = mission_classification["mission_id"].astype(str)
+mission_classification["overlap_front_nominal"] = mission_classification["overlap_front_nominal"].apply(extract_min_overlap)
+mission_classification["overlap_side_nominal"] = mission_classification["overlap_side_nominal"].apply(extract_min_overlap)
+mission_classification["camera_pitch_derived"] = pd.to_numeric(mission_classification["camera_pitch_derived"], errors="coerce")
+mission_classification["flight_terrain_correlation_photogrammetry"] = pd.to_numeric(mission_classification["flight_terrain_correlation_photogrammetry"], errors="coerce")
+mission_classification["mission_type"] = mission_classification.apply(classify_mission, axis=1)
+
+# Keep only missions classified as high-nadir
+mission_metadata["mission_id"] = mission_metadata["mission_id"].astype(str)
+mission_metadata = mission_metadata.merge(
+    mission_classification[["mission_id", "mission_type"]], on="mission_id", how="left"
+)
+mission_metadata = mission_metadata[mission_metadata["mission_type"] == "high-nadir"]
+print(f"{len(mission_metadata)} missions remaining after filtering to high-nadir only")
 
 # Project both to metric CRS
 mission_metadata = ensure_projected_crs(mission_metadata)
@@ -120,6 +197,14 @@ pairs = (
          .drop_duplicates(subset="plot_id", keep="first")
          .reset_index(drop=True)
 )
+
+# Report and drop plots that have no overlapping high-nadir mission to pair with
+paired_plot_ids = set(pairs["plot_id"])
+unpaired_plot_ids = sorted(set(plot_bounds["plot_id"]) - paired_plot_ids)
+if unpaired_plot_ids:
+    print(f"{len(unpaired_plot_ids)} plot(s) dropped due to no overlapping high-nadir mission:")
+    for plot_id in unpaired_plot_ids:
+        print(f"  {plot_id}")
 
 # Save the pairs to a CSV file
 Path(OUTPUT_FILE).parent.mkdir(parents=True, exist_ok=True)
